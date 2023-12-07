@@ -1,17 +1,19 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-public class dfs_bfs {
+public class BOJ1260 {
 
     static StringBuilder sb = new StringBuilder();
     static boolean[] check;
     static int[][] arr;
 
     static int node, line, start;
+    static Queue<Integer> qu = new LinkedList<>();
 
     public static void main(String[] args) throws IOException {
 
@@ -33,7 +35,14 @@ public class dfs_bfs {
 
             arr[a][b] = arr[b][a] =  1;
         }
-        System.out.print(arr);
+        System.out.println(Arrays.deepToString(arr));
+    }
+    static void bfs(int start){
+        qu.add(start);
+
+        for(int i =0; i<line; i++){
+
+        }
 
     }
 
