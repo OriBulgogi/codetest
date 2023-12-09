@@ -1,10 +1,7 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class BOJ1260 {
 
@@ -15,6 +12,7 @@ public class BOJ1260 {
     static int node, line, start;
     static Queue<Integer> qu = new LinkedList<>();
 
+
     public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -24,7 +22,7 @@ public class BOJ1260 {
         line = Integer.parseInt(st.nextToken());
         start= Integer.parseInt(st.nextToken());
 
-        arr = new int[node+1][node+1];
+        arr = new int[node+1][node+1]; //입력값 이 1부터 시작
         check = new boolean[node+1];
 
         for(int i = 0 ; i < line ; i ++) {
@@ -35,15 +33,46 @@ public class BOJ1260 {
 
             arr[a][b] = arr[b][a] =  1;
         }
-        System.out.println(Arrays.deepToString(arr));
+        dfsArray(start);
+        sb.append("\n");
+        check = new boolean[node+1];
+        bfsArray(start);
+
+
+        System.out.println(sb);
     }
-    static void bfs(int start){
+    //인접 행렬구현 O(N²)
+    static void bfsArray(int start){
         qu.add(start);
+        check[start] = true;
 
-        for(int i =0; i<line; i++){
+        while(!qu.isEmpty()){
+            start = qu.poll();
+            sb.append(start+" ");
 
+            for(int i =1; i <=node; i++){
+                if(arr[start][i] == 1 && !check[i]){
+                    qu.add(i);
+                    check[i] = true;
+                }
+            }
         }
 
     }
 
+    //인접 리스트 구현 O(N*E)
+    static void bfsList(int start){
+
+    }
+    static void dfsArray(int start){
+
+        check[start] = true;
+        sb.append(start+" ");
+
+        for(int i=0; i<=node; i++){
+            if(arr[start][i] == 1 && !check[i]){
+                dfsArray(i);
+            }
+        }
+    }
 }
