@@ -44,10 +44,6 @@ public class BOJ9935 {
 
         return result;
     }
-
-    //현토에버 겨울인턴 2번째 문제 스파이더맨
-
-
     public static void main(String[] args) {
         characterExplo();
 

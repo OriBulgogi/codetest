@@ -46,6 +46,7 @@ public class BOJ1260 {
         for(int i =0; i<adjList.length; i++){
             adjList[i] = new LinkedList<Integer>();
         }
+
         for(int i=0; i<line; i++){
             StringTokenizer str = new StringTokenizer(br.readLine());
             int a = Integer.parseInt(str.nextToken());
