@@ -1,3 +1,4 @@
+import java.awt.event.MouseAdapter;
 import java.io.*;
 import java.util.*;
 
@@ -13,11 +14,16 @@ import java.util.*;
 * 3으로 나누거나 ( D[]
 * */
 public class BOJ1463 {
+    static Integer[] dp;
+    static int X;
     public static void main(String[] args) throws IOException{
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
-        int X = Integer.parseInt(bf.readLine());
-        int dp[] =new int[X+1];
+        X = Integer.parseInt(bf.readLine());
+        dp =new Integer[X+1];
 
+        dp[0] = dp[1] =0;
+
+        /*
         dp[0] = 0;
         dp[1] = 0;
 
@@ -29,5 +35,23 @@ public class BOJ1463 {
                 dp[i] = Math.min(dp[i], dp[i/3] +1 );
         }
         System.out.println(dp[X]);
+        */
+        System.out.println(madeOne(X));
+
+    }
+    //topdown
+    static int madeOne(int N){
+        if(dp[N] == null){ //타겟값이 null 이 아니면 값이 구해진것
+            if(N % 6 ==0){
+                dp[N] = Math.min(madeOne(N-1), Math.min(madeOne(N/3), madeOne(N/2)))+1 ;
+            }else if(N%3 == 0){
+                dp[N] = Math.min(madeOne(N-1), madeOne(N/3))+1 ;
+            }else if(N%2 == 0){
+                dp[N] = Math.min(madeOne(N-1), madeOne(N/2)) +1;
+            }else{
+                dp[N] = madeOne(N-1) +1;
+            }
+        }
+        return dp[N];
     }
 }
