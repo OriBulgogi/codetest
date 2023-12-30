@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.StringTokenizer;
 
-public class BOJ0814 {
+public class BOJ10814 {
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -18,7 +18,6 @@ public class BOJ0814 {
             arr[i][0] = st.nextToken();
             arr[i][1] = st.nextToken();
         }
-
         //정렬
         Arrays.sort(arr, new Comparator<String[]>() {
             @Override
