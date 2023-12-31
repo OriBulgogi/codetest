@@ -29,7 +29,12 @@ public class BOJ108116 {
             }
             sb.append(cnt+" ");
         }
-
         System.out.println(sb);
+    }
+
+    static void binarySearch(){
+        for(){
+
+        }
     }
 }
