@@ -16,6 +16,7 @@ public class BOJ1107 {
         for(int i=0; i<brokenNum; i++){
             brokenArr[Integer.parseInt(st.nextToken())] = true;
         }
+
         for(int i =0; i<=999999; i++){
             String str = String.valueOf(i);
             int len = str.length();
@@ -32,6 +33,7 @@ public class BOJ1107 {
                 result = Math.min(min, result);
             }
         }
+        //고장난 번호가 0개 이면 버그가있네..
         System.out.println(result);
 
     }
