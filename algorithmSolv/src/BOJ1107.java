@@ -11,10 +11,12 @@ public class BOJ1107 {
         boolean[] brokenArr = new boolean[10];
 
         int result = Math.abs(target - 100); //초기값 설정
-        StringTokenizer st = new StringTokenizer(bf.readLine());
 
-        for(int i=0; i<brokenNum; i++){
-            brokenArr[Integer.parseInt(st.nextToken())] = true;
+        if(brokenNum !=0){
+            StringTokenizer st = new StringTokenizer(bf.readLine());
+            for(int i=0; i<brokenNum; i++){
+                brokenArr[Integer.parseInt(st.nextToken())] = true;
+            }
         }
 
         for(int i =0; i<=999999; i++){
@@ -33,7 +35,7 @@ public class BOJ1107 {
                 result = Math.min(min, result);
             }
         }
-        //고장난 번호가 0개 이면 버그가있네..
+
         System.out.println(result);
 
     }
