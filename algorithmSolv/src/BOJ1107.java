@@ -2,7 +2,10 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
-
+/*
+* (1) 현재 번호에서 + or - 로만 타겟 번호까지 갈때의 경우
+* (2) 최대한 근사치 번호까지 누른 다음 +, - 를 이용해서 타켓 번호에 도달 했을 때의 경우
+* */
 public class BOJ1107 {
     public static void main(String[] args) throws IOException {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
@@ -19,7 +22,7 @@ public class BOJ1107 {
             }
         }
 
-        for(int i =0; i<=999999; i++){
+        for(int i =0; i<=999999; i++){ //N의 최댓값 500,000이므로 6자리수 최대 값 999,999까지 검사
             String str = String.valueOf(i);
             int len = str.length();
 
@@ -35,8 +38,6 @@ public class BOJ1107 {
                 result = Math.min(min, result);
             }
         }
-
         System.out.println(result);
-
     }
 }
