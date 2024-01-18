@@ -24,8 +24,8 @@ public class BOJ1389 {
             int x = Integer.parseInt(st.nextToken());
             int y = Integer.parseInt(st.nextToken());
 
-            graph[x].add(y);
-            graph[y].add(x);
+            graph[x].add(y);//양방향
+            graph[y].add(x);//양방향
         }
 
         int MinValue=Integer.MAX_VALUE;
@@ -49,10 +49,10 @@ public class BOJ1389 {
         check[start]=0;
         while (!qu.isEmpty()){
             int x = qu.poll();
-            for (int y : graph[x]){
-                if (check[y] != -1) continue;
-                check[y] = check[x]+1;
-                cnt += check[y];
+            for (int y : graph[x]){ //현재 노드에서 방문가능한 모든 노드 방문
+                if (check[y] != -1) continue; //이미 방문헀으면 pass
+                check[y] = check[x]+1; // 노드마다 값 누적
+                cnt += check[y]; // 누적값을 합산
                 qu.add(y);
             }
         }
