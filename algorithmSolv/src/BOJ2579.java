@@ -21,7 +21,6 @@ public class BOJ2579 {
             stairScores[i]  = Integer.parseInt(bf.readLine());
         }
         dp[1] = stairScores[1];
-
         if(stair >= 2){
             dp[2] = stairScores[1] +stairScores[2];
         }
@@ -29,12 +28,11 @@ public class BOJ2579 {
          * 두 칸 전의 메모제이션 값(dp[i-2])  세 칸 전의 메모제이션 값 (dp[i-3]) + 한 칸 전의 메모제이션 값 중 큰것 과
          * 현재 계단의 값과 함하여 DP배열에 메모이제이션을 해주면 된다.
          * */
+
         for(int i=3; i<=stair; i++){
             dp[i] = Math.max(dp[i-2], dp[i-3] + stairScores[i-1]) + stairScores[i];
         }
-
         System.out.println(dp[stair]);
-
     }
 
     /*
