@@ -14,8 +14,8 @@ public class BOJ2606 {
         computerEdgeNumber = Integer.parseInt(bf.readLine());
 
 
-        Edge = new ArrayList[computerEdgeNumber+1];
-        for(int i=1; i<=computerEdgeNumber; i++){
+        Edge = new ArrayList[computerNumber+1];
+        for(int i=1; i<=computerNumber; i++){
             Edge[i] = new ArrayList<>();
         }
         for(int i=1; i<=computerEdgeNumber; i++){
@@ -23,8 +23,10 @@ public class BOJ2606 {
             int startNode = Integer.parseInt(st.nextToken());
             int targetNode = Integer.parseInt(st.nextToken());
             Edge[startNode].add(targetNode);
+            Edge[targetNode].add(startNode);
+
         }
-        if(computerEdgeNumber > 1){
+        if(computerEdgeNumber > 0){
             VirousBfs();
         }else{
             System.out.println("0");
@@ -38,11 +40,11 @@ public class BOJ2606 {
         Arrays.fill(check, false);
         int cnt=0;
         tempQu.add(1);
+        check[1] = true;
 
 
         while (!tempQu.isEmpty()){
             int currentNode  = tempQu.poll();
-
 
             for(int i=0; i< Edge[currentNode].size(); i++){
                 int targetNode = Edge[currentNode].get(i);
