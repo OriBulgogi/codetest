@@ -19,13 +19,14 @@ public class BOJ10026 {
         N = Integer.parseInt(bf.readLine());
         Grid = new char[N][N];
         check = new boolean[N][N];
-        int count =0;
+
         for (int i=0; i<N; i++){
             String s= bf.readLine();
             for (int j=0; j<N; j++) {
                 Grid[i][j] = s.charAt(j);
             }
         }
+        int count =0;
 
         for (int i=0; i<N; i++){
             for (int j=0; j<N; j++) {
@@ -37,8 +38,8 @@ public class BOJ10026 {
         }
         sb.append(count+" ");
         count =0;
-
         check = new boolean[N][N];
+
         for (int i=0; i<N; i++){
             for (int j=0; j<N; j++) {
                 if(!check[i][j]){
@@ -47,12 +48,29 @@ public class BOJ10026 {
                 }
             }
         }
-        sb.append(count+"\n");
+        sb.append(count);
         System.out.println(sb);
 
 
     }
+    /*DFS*/
+    static void RGB(int x, int y){
+        check[x][y] = true;
+        char tmp_char = Grid[x][y];
+        for (int i=0; i<4; i++){
+            int rX = x + dX[i];
+            int rY = y + dY[i];
 
+            if(rX < 0 || rY < 0|| rX >=N || rY >= N) continue;
+            if(!check[rX][rY] && Grid[rX][rY] == tmp_char){
+                RGB(rX, rY);
+            }
+        }
+        if (Grid[x][y] == 'G')
+            Grid[x][y] = 'R';
+    }
+/*BFS*/
+    /*
     static void RGB(int x, int y){
         Queue<int[]> RGBqueue = new LinkedList<>();
         RGBqueue.offer(new int[]{x,y});
@@ -77,4 +95,6 @@ public class BOJ10026 {
                 Grid[X][Y] = 'R';
         }
     }
+
+     */
 }
