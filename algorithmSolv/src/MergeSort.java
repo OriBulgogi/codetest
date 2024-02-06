@@ -22,13 +22,11 @@ public class MergeSort {
     }
     static void mergeSort(int left, int right){
         if(left >= right) return;
-        //divide left, right
         int mid = (left+right)/2;
 
         mergeSort(left,mid);
         mergeSort(mid+1,right);
 
-        //merge
         merge(left, mid, right);
 
     }
@@ -47,7 +45,7 @@ public class MergeSort {
             }
         }
 
-        for(int i =left; i<=right; i++){
+        for(int i =left; i<=right; i++){ //앞쪽 데이터
             arr[i] = tmp[i];
         }
     }
