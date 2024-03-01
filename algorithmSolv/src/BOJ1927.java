@@ -5,8 +5,6 @@ import java.util.PriorityQueue;
 
 public class BOJ1927 {
     static int N;
-
-
     static PriorityQueue<Integer> pq = new PriorityQueue<>();
 
     public static void main(String[] args) throws IOException {
@@ -29,8 +27,6 @@ public class BOJ1927 {
          public MinHeap(int size){
              HeapArray = new int[size];
         }
-
-
         private void insert(int x){
             HeapArray[++CurrentSize] = x;
             for(int i =CurrentSize; i>1; i/=2){
