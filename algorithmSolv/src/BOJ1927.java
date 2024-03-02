@@ -9,17 +9,19 @@ public class BOJ1927 {
 
     public static void main(String[] args) throws IOException {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
         N = Integer.parseInt(bf.readLine());
         //JavaLib(bf);
         MinHeap mh = new MinHeap(100001);
         for (int i = 0; i < N; i++) {
             int x = Integer.parseInt(bf.readLine());
             if (x == 0) { //최소힙 delete
-                System.out.println(mh.delete());
+                sb.append(mh.delete()+"\n");
             } else {
                 mh.insert(x);
             }
         }
+        System.out.println(sb);
     }
     public static class MinHeap{
         int[] HeapArray;

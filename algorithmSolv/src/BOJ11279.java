@@ -2,27 +2,23 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Currency;
-import java.util.HexFormat;
 
 public class BOJ11279 {
     public static void main(String[] args) throws IOException {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
         int N = Integer.parseInt(bf.readLine());
         MaxHeap mh = new MaxHeap(100001);
 
         for (int i=0; i<N; i++){
             int x = Integer.parseInt(bf.readLine());
             if(x == 0){
-                if(mh.CurrentSize ==0){
-                    System.out.println("0");
-                }else{
-                    System.out.println(mh.Delete());
-                }
-
+                sb.append(mh.Delete() + "\n");
             }else{
                 mh.Insert(x);
             }
         }
+        System.out.println(sb);
     }
     public static class MaxHeap{
         int[] HeapArray;
@@ -49,12 +45,13 @@ public class BOJ11279 {
             }
              int root = HeapArray[1];
             HeapArray[1] = HeapArray[CurrentSize];
+            HeapArray[CurrentSize] =0;
             CurrentSize--;
             for(int i=1; i*2<=CurrentSize;){
                 if(HeapArray[i] > HeapArray[i*2] && HeapArray[i] > HeapArray[i*2+1]){
                     break;
                 }
-                if(HeapArray[i*2] < HeapArray[i*2+1]){
+                if(HeapArray[i*2] < HeapArray[i*2+1] && HeapArray[i*2+1] != 0){
                     Swap(i,i*2+1);
                     i = i*2+1;
                 }else{
@@ -67,7 +64,7 @@ public class BOJ11279 {
 
         void Swap(int a, int b){
             int temp = HeapArray[b];
-            HeapArray[b] = a;
+            HeapArray[b] = HeapArray[a];
             HeapArray[a] = temp;
         }
     }
