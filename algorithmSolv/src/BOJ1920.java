@@ -5,44 +5,49 @@ import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class BOJ1920 {
-    static StringBuilder sb = new StringBuilder();
-    static int[] arr1;
+
     public static void main(String[] args) throws IOException {
-        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
-        int N1 =Integer.parseInt(bf.readLine());
-        arr1 = new int[N1];
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        StringTokenizer st = new StringTokenizer(bf.readLine());
-        for(int i=0; i<N1; i++){
-            arr1[i] =Integer.parseInt(st.nextToken());
+        int N = Integer.parseInt(br.readLine());
+        int[] orgiginArr = new int[N];
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
+        for (int i=0; i<N; i++){
+             orgiginArr[i] = Integer.parseInt(st.nextToken());
         }
-        Arrays.sort(arr1);
-        int N2 =Integer.parseInt(bf.readLine());
-        StringTokenizer st2 = new StringTokenizer(bf.readLine());
-        for(int i=0; i<N2; i++){
-            sb.append(binarySearch(Integer.parseInt(st2.nextToken())));
+        Arrays.sort(orgiginArr);
+
+        int M = Integer.parseInt(br.readLine());
+        StringTokenizer st2 = new StringTokenizer(br.readLine());
+        int target;
+
+        for (int i=0; i<M; i++){
+            target = Integer.parseInt(st2.nextToken());
+            int low = 0;
+            int high = orgiginArr.length-1;
+
+            binarySearch(orgiginArr, target, low, high);
         }
-        System.out.println(sb);
     }
-    static String binarySearch(int target){
-        int mid = 0;
-        int low = 0;
-        int high = arr1.length-1;
 
-        while (low <= high){
-            mid = (high+low)/2;
-            if(arr1[mid]<target){
-                low = mid+1;
-            }else if(arr1[mid]>target){
-                high = mid-1;
-            }else{
-                if(arr1[mid] == target){
-                    return "1\n";
-                }else{
-                    return "0\n";
-                }
-            }
+    static void binarySearch(int[] arr, int target, int low, int high){
+
+        int mid = (high+low)/2;
+
+        if(target ==  arr[mid]){
+            System.out.println(1);
+            return;
+        }else if(low > high){
+            System.out.println(0);
+            return;
+        }else if(arr[mid] < target){
+            low = mid+1;
+        }else{
+            high = mid-1;
         }
-        return "0\n";
+
+        binarySearch(arr, target, low, high);
+
     }
 }
