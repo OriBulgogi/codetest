@@ -1,0 +1,15 @@
+/*
+
+select ANIMAL_ID, NAME 
+from ANIMAL_OUTS 
+where J.ANIMAL_ID NOT IN 
+    (SELECT A.ANIMAL_ID
+    from ANIMAL_OUTS A 
+    left join ANIMAL_INS B ON A.ANIMAL_ID = B.ANIMAL_ID)
+order by ANIMAL_ID
+*/
+
+SELECT A.ANIMAL_ID, A.NAME
+    from ANIMAL_OUTS A 
+    left join ANIMAL_INS B ON A.ANIMAL_ID = B.ANIMAL_ID
+    where B.ANIMAL_ID is null
